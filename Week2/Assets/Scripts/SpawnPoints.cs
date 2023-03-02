@@ -6,29 +6,44 @@ using UnityEngine.AI;
 public class SpawnPoints : MonoBehaviour
 {
 
-    public GameObject enemySpawner;
+    public GameObject[] enemySpawner;
+    public Transform[] destinationPoint;
+    private Transform spawnPoint;
 
-    // Update is called once per frame
-    void Update()
+
+	private void Start()
+	{
+        spawnPoint = transform;
+	}
+	// Update is called once per frame
+	void Update()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
 		{
-            Instantiate(enemySpawner, transform.position, Quaternion.identity);
-		}
+            GameObject soldier = Instantiate(enemySpawner[0], transform.position, Quaternion.identity) as GameObject;
+            soldier.GetComponent<AgentMovements>().agentDestination = destinationPoint[0];
+            soldier.GetComponent<AgentMovements>().agentSpawn = spawnPoint;
+        }
 
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            Instantiate(enemySpawner, transform.position, Quaternion.identity);
+            GameObject soldier = Instantiate(enemySpawner[1], transform.position, Quaternion.identity) as GameObject;
+            soldier.GetComponent<AgentMovements>().agentDestination = destinationPoint[1];
+            soldier.GetComponent<AgentMovements>().agentSpawn = spawnPoint;
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            Instantiate(enemySpawner, transform.position, Quaternion.identity);
+            GameObject soldier = Instantiate(enemySpawner[2], transform.position, Quaternion.identity) as GameObject;
+            soldier.GetComponent<AgentMovements>().agentDestination = destinationPoint[2];
+            soldier.GetComponent<AgentMovements>().agentSpawn = spawnPoint;
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {
-            Instantiate(enemySpawner, transform.position, Quaternion.identity);
+            GameObject soldier = Instantiate(enemySpawner[3], transform.position, Quaternion.identity) as GameObject;
+            soldier.GetComponent<AgentMovements>().agentDestination = destinationPoint[3];
+            soldier.GetComponent<AgentMovements>().agentSpawn = spawnPoint;
         }
     }
 }
